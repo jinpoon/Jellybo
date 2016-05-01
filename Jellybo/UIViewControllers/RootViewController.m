@@ -86,7 +86,22 @@
     self.mainTabBarController.viewControllers = VCs;
     self.mainTabBarController.tabBar.tintColor = kThemeColor;
     
+    
     [self.view addSubview:self.mainTabBarController.view];
+}
+
+- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    if(topVC != self){
+        [topVC presentViewController:viewControllerToPresent animated:flag completion:completion];
+    }
+    else{
+        [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    }
 }
 /*
 #pragma mark - Navigation

@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <WeiboSDK/WeiboSDK.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WeiboSDKDelegate, UIApplicationDelegate>
 
 @end
 
@@ -25,7 +26,38 @@
     self.window.rootViewController = self.rootViewController;
     
     [self.window makeKeyAndVisible];
+    
+    //Weibo
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:@"1913145241"];
     return YES;
+}
+
+#pragma mark - OpenURL
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+    return [WeiboSDK handleOpenURL:url delegate:self];
+}
+
+#pragma mark - WeiboSDK
+
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+    
+}
+
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class]){
+        if (WeiboSDKResponseStatusCodeSuccess == response.statusCode) {
+            // 执行分享后的回调代理，就是分享后从新浪的客户端回到自己的应用会执行
+        }
+        
+    }else if ([response isKindOfClass:WBAuthorizeResponse.class]){
+        WBAuthorizeResponse *authorizeResponse = (WBAuthorizeResponse *)response;
+        if (WeiboSDKResponseStatusCodeSuccess == authorizeResponse.statusCode) {
+            // 使用授权会调用 授权的开发情况下面
+        }
+    }
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
