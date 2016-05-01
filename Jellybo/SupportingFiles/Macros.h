@@ -22,4 +22,8 @@
 #define JELocalizedStringWithValue(key, defaultValue) [[NSBundle mainBundle] localizedStringForKey:(key) value:(defaultValue) table:nil]
 #define JELocalizedString(key) [[NSBundle mainBundle] localizedStringForKey:(key) value:nil table:nil]
 
+#define SINA_WEIBO_ACCESS_TOKEN @"sina_weibo_access_token"
+#define SINA_WEIBO_USER_ID @"sina_weibo_user_id"
+#define SINA_WEIBO_REFRESH_TOKEN @"sina_weibo_refresh_token"
+
 #endif /* Macros_h */

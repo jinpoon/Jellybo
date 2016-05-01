@@ -18,12 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];;
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.rootViewController = [[RootViewController alloc] init];
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
-    self.window.rootViewController = self.rootViewController;
+    self.window.rootViewController = self.rootNavigationController;
     
     [self.window makeKeyAndVisible];
     
@@ -37,6 +37,10 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
     return [WeiboSDK handleOpenURL:url delegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [self application:application openURL:url options:@{@"":@""}];
 }
 
 #pragma mark - WeiboSDK
@@ -54,7 +58,16 @@
     }else if ([response isKindOfClass:WBAuthorizeResponse.class]){
         WBAuthorizeResponse *authorizeResponse = (WBAuthorizeResponse *)response;
         if (WeiboSDKResponseStatusCodeSuccess == authorizeResponse.statusCode) {
-            // 使用授权会调用 授权的开发情况下面
+            
+            NSString *accessToken = authorizeResponse.accessToken;
+            NSString *userId = authorizeResponse.userID;
+            NSString *refreshToken = authorizeResponse.refreshToken;
+            NSLog(@"token: %@", accessToken);
+            NSLog(@"userId: %@", userId);
+            [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:SINA_WEIBO_ACCESS_TOKEN];
+            [[NSUserDefaults standardUserDefaults] setObject:userId forKey:SINA_WEIBO_USER_ID];
+            [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:SINA_WEIBO_REFRESH_TOKEN];
+            
         }
     }
     

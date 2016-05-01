@@ -86,12 +86,11 @@
     self.mainTabBarController.viewControllers = VCs;
     self.mainTabBarController.tabBar.tintColor = kThemeColor;
     
-    
     [self.view addSubview:self.mainTabBarController.view];
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
-    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *appRootVC = [[[UIApplication sharedApplication] delegate] window].rootViewController;
     UIViewController *topVC = appRootVC;
     while (topVC.presentedViewController) {
         topVC = topVC.presentedViewController;
