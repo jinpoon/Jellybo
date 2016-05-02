@@ -24,6 +24,6 @@
 
 #define SINA_WEIBO_ACCESS_TOKEN @"sina_weibo_access_token"
 #define SINA_WEIBO_USER_ID @"sina_weibo_user_id"
-#define SINA_WEIBO_REFRESH_TOKEN @"sina_weibo_refresh_token"
+#define SINA_WEIBO_EXPIRE_DATE @"sina_weibo_expire_date"
 
 #endif /* Macros_h */

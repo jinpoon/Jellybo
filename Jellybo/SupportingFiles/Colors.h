@@ -10,5 +10,6 @@
 #define Colors_h
 
 #define kThemeColor RGBA(0x258de9, 1)
+#define kBackgroundGrayColor RGBA(0xebebeb, 1)
 
 #endif /* Colors_h */

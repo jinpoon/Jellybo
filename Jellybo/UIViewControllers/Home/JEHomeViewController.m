@@ -9,9 +9,9 @@
 #import "JEHomeViewController.h"
 #import <WeiboSDK/WeiboSDK.h>
 
-@interface JEHomeViewController ()
+@interface JEHomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) UIButton *authorizeButton;
+@property (nonatomic) UITableView *tableView;
 
 @end
 
@@ -19,18 +19,31 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    [self.authorizeButton sizeToFit];
-    self.authorizeButton.centerX = self.view.width/2;
-    self.authorizeButton.centerY = (self.view.height-40)/2;
 }
 
 - (void)configureViews{
-    self.authorizeButton = [[UIButton alloc] init];
-    [self.authorizeButton setTitle:@"TapToAuth" forState:UIControlStateNormal];
-    [self.authorizeButton setTitleColor:RGB(0x000000) forState:UIControlStateNormal];
-    self.authorizeButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    [self.authorizeButton addTarget:self action:@selector(authorizeWeibo) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.authorizeButton];
+    self.view.backgroundColor = kBackgroundGrayColor;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//  hide the bottom line
+//    if ([self.navigationController.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)]){
+//        NSArray *list=self.navigationController.navigationBar.subviews;
+//        for (id obj in list) {
+//            if ([obj isKindOfClass:[UIImageView class]]) {
+//                UIImageView *imageView=(UIImageView *)obj;
+//                NSArray *list2=imageView.subviews;
+//                for (id obj2 in list2) {
+//                    if ([obj2 isKindOfClass:[UIImageView class]]) {
+//                        UIImageView *imageView2=(UIImageView *)obj2;
+//                        imageView2.hidden=YES;
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    //self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^(){}];
 }
 
 - (void)viewDidLoad {

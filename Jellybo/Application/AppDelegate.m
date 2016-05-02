@@ -30,6 +30,7 @@
     //Weibo
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:@"1913145241"];
+    [self checkIfExpired];
     return YES;
 }
 
@@ -44,6 +45,25 @@
 }
 
 #pragma mark - WeiboSDK
+- (void)checkIfExpired{
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSDate *expireDate = [[NSUserDefaults standardUserDefaults] valueForKey:SINA_WEIBO_EXPIRE_DATE];
+    if([expireDate isEqualToDate: [expireDate earlierDate:now]]){
+        [self authorizeWeibo];
+    }
+}
+
+- (void)authorizeWeibo{
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = @"http://www.sina.com";
+    request.scope = @"all";
+    request.userInfo = @{@"SSO_From": @"SendMessageToWeiboViewController",
+                         @"Other_Info_1": [NSNumber numberWithInt:123],
+                         @"Other_Info_2": @[@"obj1", @"obj2"],
+                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+    
+    [WeiboSDK sendRequest:request];
+}
 
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
     
@@ -61,12 +81,12 @@
             
             NSString *accessToken = authorizeResponse.accessToken;
             NSString *userId = authorizeResponse.userID;
-            NSString *refreshToken = authorizeResponse.refreshToken;
+            NSDate *expireDate = authorizeResponse.expirationDate;
             NSLog(@"token: %@", accessToken);
             NSLog(@"userId: %@", userId);
             [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:SINA_WEIBO_ACCESS_TOKEN];
             [[NSUserDefaults standardUserDefaults] setObject:userId forKey:SINA_WEIBO_USER_ID];
-            [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:SINA_WEIBO_REFRESH_TOKEN];
+            [[NSUserDefaults standardUserDefaults] setObject:expireDate forKey:SINA_WEIBO_EXPIRE_DATE];
             
         }
     }

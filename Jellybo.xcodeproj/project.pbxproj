@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0B7DB15F4D304B47B991A2E2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F461D18D284BAE83F3D50F /* libPods.a */; };
+		70517F641CD6DC070029233C /* JEBaseWeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F631CD6DC070029233C /* JEBaseWeiboCell.m */; };
+		70517F6A1CD6DD2C0029233C /* JEBaseWeiboContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F691CD6DD2C0029233C /* JEBaseWeiboContentModel.m */; };
+		70517F6D1CD775B10029233C /* NSDictionary+NotNullKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F6C1CD775B10029233C /* NSDictionary+NotNullKey.m */; };
+		70517F711CD77E3F0029233C /* JEGeoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F701CD77E3F0029233C /* JEGeoInfoModel.m */; };
+		70517F741CD77E740029233C /* JEBaseUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F731CD77E740029233C /* JEBaseUserInfoModel.m */; };
+		70517F771CD782F30029233C /* JEBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F761CD782F30029233C /* JEBaseModel.m */; };
+		70517F7B1CD79FF00029233C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F7A1CD79FF00029233C /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		70517F811CD7A0F30029233C /* JEHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F801CD7A0F30029233C /* JEHTTPManager.m */; };
 		707B38D01CD2FA24000A3C93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B38CF1CD2FA24000A3C93 /* main.m */; };
 		707B38DB1CD2FA24000A3C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707B38DA1CD2FA24000A3C93 /* Assets.xcassets */; };
 		707B38DE1CD2FA24000A3C93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707B38DC1CD2FA24000A3C93 /* LaunchScreen.storyboard */; };
@@ -43,6 +51,23 @@
 
 /* Begin PBXFileReference section */
 		31F461D18D284BAE83F3D50F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		70517F621CD6DC070029233C /* JEBaseWeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEBaseWeiboCell.h; path = Jellybo/UIViewControllers/Home/View/JEBaseWeiboCell.h; sourceTree = SOURCE_ROOT; };
+		70517F631CD6DC070029233C /* JEBaseWeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEBaseWeiboCell.m; path = Jellybo/UIViewControllers/Home/View/JEBaseWeiboCell.m; sourceTree = SOURCE_ROOT; };
+		70517F681CD6DD2C0029233C /* JEBaseWeiboContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEBaseWeiboContentModel.h; path = Models/Content/JEBaseWeiboContentModel.h; sourceTree = "<group>"; };
+		70517F691CD6DD2C0029233C /* JEBaseWeiboContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEBaseWeiboContentModel.m; path = Models/Content/JEBaseWeiboContentModel.m; sourceTree = "<group>"; };
+		70517F6B1CD775B10029233C /* NSDictionary+NotNullKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+NotNullKey.h"; path = "Vendors/NSDictionary+NotNullKey.h"; sourceTree = "<group>"; };
+		70517F6C1CD775B10029233C /* NSDictionary+NotNullKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+NotNullKey.m"; path = "Vendors/NSDictionary+NotNullKey.m"; sourceTree = "<group>"; };
+		70517F6F1CD77E3F0029233C /* JEGeoInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEGeoInfoModel.h; path = Models/Geography/JEGeoInfoModel.h; sourceTree = "<group>"; };
+		70517F701CD77E3F0029233C /* JEGeoInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEGeoInfoModel.m; path = Models/Geography/JEGeoInfoModel.m; sourceTree = "<group>"; };
+		70517F721CD77E740029233C /* JEBaseUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEBaseUserInfoModel.h; path = Models/User/JEBaseUserInfoModel.h; sourceTree = "<group>"; };
+		70517F731CD77E740029233C /* JEBaseUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEBaseUserInfoModel.m; path = Models/User/JEBaseUserInfoModel.m; sourceTree = "<group>"; };
+		70517F751CD782F30029233C /* JEBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEBaseModel.h; path = Models/JEBaseModel.h; sourceTree = "<group>"; };
+		70517F761CD782F30029233C /* JEBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEBaseModel.m; path = Models/JEBaseModel.m; sourceTree = "<group>"; };
+		70517F781CD799560029233C /* JEApiKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JEApiKeys.h; path = Application/JEApiKeys.h; sourceTree = "<group>"; };
+		70517F791CD79FF00029233C /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Vendors/JSONKit.h; sourceTree = "<group>"; };
+		70517F7A1CD79FF00029233C /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Vendors/JSONKit.m; sourceTree = "<group>"; };
+		70517F7F1CD7A0F30029233C /* JEHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JEHTTPManager.h; sourceTree = "<group>"; };
+		70517F801CD7A0F30029233C /* JEHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEHTTPManager.m; sourceTree = "<group>"; };
 		707B38CB1CD2FA24000A3C93 /* Jellybo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jellybo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707B38CF1CD2FA24000A3C93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		707B38DA1CD2FA24000A3C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +137,79 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		70517F611CD6DB720029233C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70517F621CD6DC070029233C /* JEBaseWeiboCell.h */,
+				70517F631CD6DC070029233C /* JEBaseWeiboCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70517F651CD6DC810029233C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				70517F6E1CD77DC80029233C /* Geography */,
+				70517F671CD6DC950029233C /* Content */,
+				70517F661CD6DC8B0029233C /* User */,
+				70517F751CD782F30029233C /* JEBaseModel.h */,
+				70517F761CD782F30029233C /* JEBaseModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		70517F661CD6DC8B0029233C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				70517F721CD77E740029233C /* JEBaseUserInfoModel.h */,
+				70517F731CD77E740029233C /* JEBaseUserInfoModel.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		70517F671CD6DC950029233C /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				70517F681CD6DD2C0029233C /* JEBaseWeiboContentModel.h */,
+				70517F691CD6DD2C0029233C /* JEBaseWeiboContentModel.m */,
+			);
+			name = Content;
+			sourceTree = "<group>";
+		};
+		70517F6E1CD77DC80029233C /* Geography */ = {
+			isa = PBXGroup;
+			children = (
+				70517F6F1CD77E3F0029233C /* JEGeoInfoModel.h */,
+				70517F701CD77E3F0029233C /* JEGeoInfoModel.m */,
+			);
+			name = Geography;
+			sourceTree = "<group>";
+		};
+		70517F7C1CD7A0610029233C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				70517F7E1CD7A07F0029233C /* Cache */,
+				70517F7D1CD7A06D0029233C /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		70517F7D1CD7A06D0029233C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				70517F7F1CD7A0F30029233C /* JEHTTPManager.h */,
+				70517F801CD7A0F30029233C /* JEHTTPManager.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		70517F7E1CD7A07F0029233C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		707B38C21CD2FA24000A3C93 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +235,8 @@
 		707B38CD1CD2FA24000A3C93 /* Jellybo */ = {
 			isa = PBXGroup;
 			children = (
+				70517F7C1CD7A0610029233C /* Data */,
+				70517F651CD6DC810029233C /* Models */,
 				707B39181CD301FF000A3C93 /* Vendors */,
 				707B390E1CD2FDED000A3C93 /* Helpers */,
 				707B39081CD2FC15000A3C93 /* Application */,
@@ -197,6 +297,7 @@
 				707B39091CD2FCAA000A3C93 /* AppDelegate.h */,
 				707B390A1CD2FCAA000A3C93 /* AppDelegate.m */,
 				707B390C1CD2FCF5000A3C93 /* PrefixHeader.pch */,
+				70517F781CD799560029233C /* JEApiKeys.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -213,6 +314,10 @@
 		707B39181CD301FF000A3C93 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				70517F791CD79FF00029233C /* JSONKit.h */,
+				70517F7A1CD79FF00029233C /* JSONKit.m */,
+				70517F6B1CD775B10029233C /* NSDictionary+NotNullKey.h */,
+				70517F6C1CD775B10029233C /* NSDictionary+NotNullKey.m */,
 				707B39191CD30209000A3C93 /* EXTScope */,
 			);
 			name = Vendors;
@@ -231,6 +336,7 @@
 		707B391E1CD34C5A000A3C93 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				70517F611CD6DB720029233C /* View */,
 				707B39231CD34CAD000A3C93 /* JEHomeViewController.h */,
 				707B39241CD34CAD000A3C93 /* JEHomeViewController.m */,
 			);
@@ -432,12 +538,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70517F811CD7A0F30029233C /* JEHTTPManager.m in Sources */,
 				707B391D1CD30218000A3C93 /* EXTScope.m in Sources */,
 				707B39141CD30010000A3C93 /* JEHelper.m in Sources */,
+				70517F741CD77E740029233C /* JEBaseUserInfoModel.m in Sources */,
 				707B39251CD34CAD000A3C93 /* JEHomeViewController.m in Sources */,
+				70517F6D1CD775B10029233C /* NSDictionary+NotNullKey.m in Sources */,
 				707B392B1CD34CED000A3C93 /* JEMessagesViewController.m in Sources */,
+				70517F7B1CD79FF00029233C /* JSONKit.m in Sources */,
+				70517F711CD77E3F0029233C /* JEGeoInfoModel.m in Sources */,
 				707B392E1CD34D01000A3C93 /* JEPersonViewController.m in Sources */,
 				707B390B1CD2FCAA000A3C93 /* AppDelegate.m in Sources */,
+				70517F641CD6DC070029233C /* JEBaseWeiboCell.m in Sources */,
+				70517F6A1CD6DD2C0029233C /* JEBaseWeiboContentModel.m in Sources */,
+				70517F771CD782F30029233C /* JEBaseModel.m in Sources */,
 				707B38D01CD2FA24000A3C93 /* main.m in Sources */,
 				707B39071CD2FAF1000A3C93 /* RootViewController.m in Sources */,
 				707B39281CD34CCF000A3C93 /* JEDiscoverViewController.m in Sources */,
