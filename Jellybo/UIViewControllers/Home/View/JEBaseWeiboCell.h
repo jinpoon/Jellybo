@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JEBaseWeiboContentModel.h"
 
 @interface JEBaseWeiboCell : UITableViewCell
+
+@property (nonatomic, strong) JEBaseWeiboContentModel *model;
+
+-(CGFloat)cellHeight;
 
 @end

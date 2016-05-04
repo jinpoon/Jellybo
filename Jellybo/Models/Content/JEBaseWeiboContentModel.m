@@ -23,11 +23,32 @@
         self.truncated = [[dict objectForSafeKey:k_truncated] boolValue];
         self.thumbnail_pics_urls = [dict objectForSafeKey:k_pics_urls];
         //self.geoInfo = [dict objectForSafeKey:k_geo];
-        //self.userInfo = [dict objectForSafeKey:k_user];
+        self.userInfo = nil;
+        NSDictionary *userInfoDict = [dict objectForSafeKey:k_user];
+        if(userInfoDict){
+            self.userInfo = [[JEBaseUserInfoModel alloc] initWithDictionary:userInfoDict];
+        }
         self.reposts_count = [[dict objectForSafeKey:k_reposts_count] integerValue];
         self.comments_count = [[dict objectForSafeKey:k_comments_count] integerValue];
         self.attitudes_count = [[dict objectForSafeKey:k_attitudes_count] integerValue];
         self.isLongText = [[dict objectForSafeKey:k_is_long_text] boolValue];
+        
+    }
+    return self;
+}
+
+@end
+
+@implementation JEBaseWeiboContentListModel
+
+- (instancetype) initWithDictionary:(NSDictionary *)dict{
+    if(self = [super initWithDictionary:dict]){
+        self.list = [[NSMutableArray alloc] init];
+        NSArray *contents = [dict objectForSafeKey:@"statuses"];
+        for (NSDictionary *dicts in contents) {
+            JEBaseWeiboContentModel *weibocontentModel = [[JEBaseWeiboContentModel alloc] initWithDictionary:dicts];
+            [self.list addObject:weibocontentModel];
+        }
         
     }
     return self;

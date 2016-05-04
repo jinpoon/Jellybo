@@ -11,6 +11,7 @@
 #import "JEDiscoverViewController.h"
 #import "JEMessagesViewController.h"
 #import "JEPersonViewController.h"
+#import "UINavigationController+Custom.h"
 
 @interface RootViewController ()<UITabBarControllerDelegate, UITabBarDelegate>
 @property (nonatomic, strong) JEHomeViewController *homeVC;
@@ -67,8 +68,8 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:tabItemTextAttr_normal forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:tabItemTextAttr_selected forState:UIControlStateSelected];
-    //[[UITabBarItem appearance] setImageInsets:UIEdgeInsetsMake(-3, 0, 0, 0)];
-    [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    //[[UITabBarItem appearance] setImageInsets:UIEdgeInsetsMake(0, -3, 0, 0)];
+    [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -2)];
     
     self.homeNaviVC = [[UINavigationController alloc] initWithRootViewController:self.homeVC];
     self.homeNaviVC.tabBarItem = barItem1;

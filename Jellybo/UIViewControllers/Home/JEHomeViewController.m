@@ -8,41 +8,32 @@
 
 #import "JEHomeViewController.h"
 #import <WeiboSDK/WeiboSDK.h>
+#import "JEHTTPManager+Content.h"
+#import "JEBaseWeiboContentModel.h"
+#import "JEBaseWeiboCell.h"
 
 @interface JEHomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
-
+@property (nonatomic, strong) JEBaseWeiboContentListModel *contentListModel;
 @end
 
 @implementation JEHomeViewController
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
+    self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
 }
 
 - (void)configureViews{
     self.view.backgroundColor = kBackgroundGrayColor;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//  hide the bottom line
-//    if ([self.navigationController.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)]){
-//        NSArray *list=self.navigationController.navigationBar.subviews;
-//        for (id obj in list) {
-//            if ([obj isKindOfClass:[UIImageView class]]) {
-//                UIImageView *imageView=(UIImageView *)obj;
-//                NSArray *list2=imageView.subviews;
-//                for (id obj2 in list2) {
-//                    if ([obj2 isKindOfClass:[UIImageView class]]) {
-//                        UIImageView *imageView2=(UIImageView *)obj2;
-//                        imageView2.hidden=YES;
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     self.tableView = [[UITableView alloc] init];
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
     //self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^(){}];
 }
 
@@ -50,6 +41,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configureViews];
+    [self testDataRequest];
+}
+
+- (void)testDataRequest{
+    [[JEHTTPManager manager] getHomeTimelineWeiboContentListWithSinceId:0 maxId:0 count:10 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+        self.contentListModel = listModel;
+        
+        
+    }failure:^(NSError *error){
+        NSLog(@"%@",error.description);
+    }];
+}
+
+- (void)setContentListModel:(JEBaseWeiboContentListModel *)contentListModel{
+    _contentListModel = contentListModel;
+    if(_contentListModel){
+        [self.tableView reloadData];
+    }
 }
 
 - (void)authorizeWeibo{
@@ -67,6 +76,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.contentListModel.list.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *weiboCellIdentifier = @"weiboCellIdentifier";
+    JEBaseWeiboCell *cell = (JEBaseWeiboCell *)[tableView dequeueReusableCellWithIdentifier:weiboCellIdentifier];
+    if(!cell){
+        cell = [[JEBaseWeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:weiboCellIdentifier];
+    }
+    cell.model = self.contentListModel.list[indexPath.row];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 200;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
 }
 
 /*

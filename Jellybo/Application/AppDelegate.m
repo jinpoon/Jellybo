@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <WeiboSDK/WeiboSDK.h>
+#import "UINavigationController+Custom.h"
 
 @interface AppDelegate ()<WeiboSDKDelegate, UIApplicationDelegate>
 
@@ -26,6 +27,10 @@
     self.window.rootViewController = self.rootNavigationController;
     
     [self.window makeKeyAndVisible];
+    
+    //manager
+    [JEUserManager manager];
+    [JEHTTPManager manager];
     
     //Weibo
     [WeiboSDK enableDebugMode:YES];
@@ -50,6 +55,10 @@
     NSDate *expireDate = [[NSUserDefaults standardUserDefaults] valueForKey:SINA_WEIBO_EXPIRE_DATE];
     if([expireDate isEqualToDate: [expireDate earlierDate:now]]){
         [self authorizeWeibo];
+    }
+    else{
+        [JEUserManager manager].accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:SINA_WEIBO_ACCESS_TOKEN];
+        [JEUserManager manager].userId = [[NSUserDefaults standardUserDefaults] valueForKey: SINA_WEIBO_USER_ID];
     }
 }
 

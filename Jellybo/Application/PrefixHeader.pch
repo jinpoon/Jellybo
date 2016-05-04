@@ -18,4 +18,7 @@
 #import <FrameAccessor/FrameAccessor.h>
 #import <MJRefresh/MJRefresh.h>
 #import "JEApiKeys.h"
+#import "JEUserManager.h"
+#import "JEHTTPManager.h"
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 #endif /* PrefixHeader_pch */

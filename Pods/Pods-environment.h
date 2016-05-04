@@ -90,6 +90,12 @@
 #define COCOAPODS_VERSION_MINOR_MJRefresh 1
 #define COCOAPODS_VERSION_PATCH_MJRefresh 0
 
+// TTTAttributedLabel
+#define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
+#define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
+#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 4
+
 // WeiboSDK
 #define COCOAPODS_POD_AVAILABLE_WeiboSDK
 #define COCOAPODS_VERSION_MAJOR_WeiboSDK 3

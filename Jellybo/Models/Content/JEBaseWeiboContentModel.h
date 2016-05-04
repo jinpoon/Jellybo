@@ -35,3 +35,9 @@
 
 
 @end
+
+@interface JEBaseWeiboContentListModel : JEBaseModel
+
+@property (nonatomic, strong) NSMutableArray *list;
+
+@end

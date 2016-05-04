@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TTTAttributedLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WeiboSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>34EF6D2C652443EFB12A85D4</key>
+		<key>0F424DAA791C46D9B462C71E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A0920C3916C4B9795BDB629</key>
+		<key>19CD13C9B9304BF690B380F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70A9BBF17A0E42428A6FD77D</key>
+		<key>337142B9C63649ACA0AD0CCF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>74C3394EE1BF480CAD889FF1</key>
+		<key>337E5C34C99E49BC9DB626C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A023068A2EB644BC84760B5E</key>
+		<key>94A4488C4EB54F2F9B4F958B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D750B997DF43406B842C05F8</key>
+		<key>B085309337C847F58F416EA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B30CE829E9B448DBB8CB8515</key>
 		<dict>
 			<key>primary</key>
 			<true/>

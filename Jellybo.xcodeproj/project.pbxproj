@@ -16,8 +16,9 @@
 		70517F771CD782F30029233C /* JEBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F761CD782F30029233C /* JEBaseModel.m */; };
 		70517F7B1CD79FF00029233C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F7A1CD79FF00029233C /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		70517F811CD7A0F30029233C /* JEHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F801CD7A0F30029233C /* JEHTTPManager.m */; };
+		70517F851CD8356F0029233C /* JEHTTPManager+Content.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F841CD8356F0029233C /* JEHTTPManager+Content.m */; };
+		70517F891CD83D0C0029233C /* JEUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70517F881CD83D0C0029233C /* JEUserManager.m */; };
 		707B38D01CD2FA24000A3C93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B38CF1CD2FA24000A3C93 /* main.m */; };
-		707B38DB1CD2FA24000A3C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707B38DA1CD2FA24000A3C93 /* Assets.xcassets */; };
 		707B38DE1CD2FA24000A3C93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707B38DC1CD2FA24000A3C93 /* LaunchScreen.storyboard */; };
 		707B38E91CD2FA24000A3C93 /* JellyboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B38E81CD2FA24000A3C93 /* JellyboTests.m */; };
 		707B38F41CD2FA24000A3C93 /* JellyboUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B38F31CD2FA24000A3C93 /* JellyboUITests.m */; };
@@ -30,6 +31,11 @@
 		707B39281CD34CCF000A3C93 /* JEDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B39271CD34CCF000A3C93 /* JEDiscoverViewController.m */; };
 		707B392B1CD34CED000A3C93 /* JEMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B392A1CD34CED000A3C93 /* JEMessagesViewController.m */; };
 		707B392E1CD34D01000A3C93 /* JEPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B392D1CD34D01000A3C93 /* JEPersonViewController.m */; };
+		70DAE08B1CD8E80800DAE0FE /* JERetweetViewInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */; };
+		70DAE08E1CD8E87500DAE0FE /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE08D1CD8E87500DAE0FE /* UINavigationController+Custom.m */; };
+		70DAE0901CD9AE1100DAE0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70DAE08F1CD9AE1100DAE0FE /* Assets.xcassets */; };
+		70DAE0941CD9B9FA00DAE0FE /* JEDrawerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE0931CD9B9FA00DAE0FE /* JEDrawerHelper.m */; };
+		70DAE0981CD9E40A00DAE0FE /* JEHTTPManager+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE0971CD9E40A00DAE0FE /* JEHTTPManager+User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,9 +74,12 @@
 		70517F7A1CD79FF00029233C /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Vendors/JSONKit.m; sourceTree = "<group>"; };
 		70517F7F1CD7A0F30029233C /* JEHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JEHTTPManager.h; sourceTree = "<group>"; };
 		70517F801CD7A0F30029233C /* JEHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEHTTPManager.m; sourceTree = "<group>"; };
+		70517F831CD8356F0029233C /* JEHTTPManager+Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JEHTTPManager+Content.h"; sourceTree = "<group>"; };
+		70517F841CD8356F0029233C /* JEHTTPManager+Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JEHTTPManager+Content.m"; sourceTree = "<group>"; };
+		70517F871CD83D0C0029233C /* JEUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JEUserManager.h; sourceTree = "<group>"; };
+		70517F881CD83D0C0029233C /* JEUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEUserManager.m; sourceTree = "<group>"; };
 		707B38CB1CD2FA24000A3C93 /* Jellybo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jellybo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707B38CF1CD2FA24000A3C93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		707B38DA1CD2FA24000A3C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		707B38DD1CD2FA24000A3C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		707B38DF1CD2FA24000A3C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		707B38E41CD2FA24000A3C93 /* JellyboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JellyboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +109,15 @@
 		707B392C1CD34D01000A3C93 /* JEPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEPersonViewController.h; path = UIViewControllers/Person/JEPersonViewController.h; sourceTree = "<group>"; };
 		707B392D1CD34D01000A3C93 /* JEPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEPersonViewController.m; path = UIViewControllers/Person/JEPersonViewController.m; sourceTree = "<group>"; };
 		707B392F1CD351FD000A3C93 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Colors.h; path = SupportingFiles/Colors.h; sourceTree = "<group>"; };
+		70DAE0891CD8E80800DAE0FE /* JERetweetViewInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JERetweetViewInCell.h; path = Jellybo/UIViewControllers/Home/View/JERetweetViewInCell.h; sourceTree = SOURCE_ROOT; };
+		70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JERetweetViewInCell.m; path = Jellybo/UIViewControllers/Home/View/JERetweetViewInCell.m; sourceTree = SOURCE_ROOT; };
+		70DAE08C1CD8E87500DAE0FE /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Custom.h"; path = "Vendors/UINavigationController+Custom.h"; sourceTree = "<group>"; };
+		70DAE08D1CD8E87500DAE0FE /* UINavigationController+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Custom.m"; path = "Vendors/UINavigationController+Custom.m"; sourceTree = "<group>"; };
+		70DAE08F1CD9AE1100DAE0FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		70DAE0921CD9B9FA00DAE0FE /* JEDrawerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JEDrawerHelper.h; sourceTree = "<group>"; };
+		70DAE0931CD9B9FA00DAE0FE /* JEDrawerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEDrawerHelper.m; sourceTree = "<group>"; };
+		70DAE0961CD9E40A00DAE0FE /* JEHTTPManager+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JEHTTPManager+User.h"; sourceTree = "<group>"; };
+		70DAE0971CD9E40A00DAE0FE /* JEHTTPManager+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JEHTTPManager+User.m"; sourceTree = "<group>"; };
 		CB6F737BE6E44C8CA5F096C4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +160,8 @@
 			children = (
 				70517F621CD6DC070029233C /* JEBaseWeiboCell.h */,
 				70517F631CD6DC070029233C /* JEBaseWeiboCell.m */,
+				70DAE0891CD8E80800DAE0FE /* JERetweetViewInCell.h */,
+				70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +217,8 @@
 		70517F7D1CD7A06D0029233C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				70DAE0951CD9E3E700DAE0FE /* User */,
+				70517F821CD8353C0029233C /* Content */,
 				70517F7F1CD7A0F30029233C /* JEHTTPManager.h */,
 				70517F801CD7A0F30029233C /* JEHTTPManager.m */,
 			);
@@ -208,6 +230,24 @@
 			children = (
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		70517F821CD8353C0029233C /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				70517F831CD8356F0029233C /* JEHTTPManager+Content.h */,
+				70517F841CD8356F0029233C /* JEHTTPManager+Content.m */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		70517F861CD83CF40029233C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				70517F871CD83D0C0029233C /* JEUserManager.h */,
+				70517F881CD83D0C0029233C /* JEUserManager.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		707B38C21CD2FA24000A3C93 = {
@@ -235,15 +275,16 @@
 		707B38CD1CD2FA24000A3C93 /* Jellybo */ = {
 			isa = PBXGroup;
 			children = (
+				70517F861CD83CF40029233C /* User */,
 				70517F7C1CD7A0610029233C /* Data */,
 				70517F651CD6DC810029233C /* Models */,
 				707B39181CD301FF000A3C93 /* Vendors */,
 				707B390E1CD2FDED000A3C93 /* Helpers */,
 				707B39081CD2FC15000A3C93 /* Application */,
 				707B39041CD2FAB7000A3C93 /* UIViewControllers */,
-				707B38DA1CD2FA24000A3C93 /* Assets.xcassets */,
 				707B38DC1CD2FA24000A3C93 /* LaunchScreen.storyboard */,
 				707B38DF1CD2FA24000A3C93 /* Info.plist */,
+				70DAE08F1CD9AE1100DAE0FE /* Assets.xcassets */,
 				707B38CE1CD2FA24000A3C93 /* Supporting Files */,
 			);
 			path = Jellybo;
@@ -305,6 +346,7 @@
 		707B390E1CD2FDED000A3C93 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				70DAE0911CD9B9DB00DAE0FE /* CircleImage */,
 				707B39121CD30010000A3C93 /* JEHelper.h */,
 				707B39131CD30010000A3C93 /* JEHelper.m */,
 			);
@@ -319,6 +361,8 @@
 				70517F6B1CD775B10029233C /* NSDictionary+NotNullKey.h */,
 				70517F6C1CD775B10029233C /* NSDictionary+NotNullKey.m */,
 				707B39191CD30209000A3C93 /* EXTScope */,
+				70DAE08C1CD8E87500DAE0FE /* UINavigationController+Custom.h */,
+				70DAE08D1CD8E87500DAE0FE /* UINavigationController+Custom.m */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -368,6 +412,24 @@
 				707B392D1CD34D01000A3C93 /* JEPersonViewController.m */,
 			);
 			name = Person;
+			sourceTree = "<group>";
+		};
+		70DAE0911CD9B9DB00DAE0FE /* CircleImage */ = {
+			isa = PBXGroup;
+			children = (
+				70DAE0921CD9B9FA00DAE0FE /* JEDrawerHelper.h */,
+				70DAE0931CD9B9FA00DAE0FE /* JEDrawerHelper.m */,
+			);
+			path = CircleImage;
+			sourceTree = "<group>";
+		};
+		70DAE0951CD9E3E700DAE0FE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				70DAE0961CD9E40A00DAE0FE /* JEHTTPManager+User.h */,
+				70DAE0971CD9E40A00DAE0FE /* JEHTTPManager+User.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,8 +541,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				707B38DE1CD2FA24000A3C93 /* LaunchScreen.storyboard in Resources */,
+				70DAE0901CD9AE1100DAE0FE /* Assets.xcassets in Resources */,
 				707B39161CD3015C000A3C93 /* Localizable.strings in Resources */,
-				707B38DB1CD2FA24000A3C93 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,15 +608,21 @@
 				70517F6D1CD775B10029233C /* NSDictionary+NotNullKey.m in Sources */,
 				707B392B1CD34CED000A3C93 /* JEMessagesViewController.m in Sources */,
 				70517F7B1CD79FF00029233C /* JSONKit.m in Sources */,
+				70DAE08E1CD8E87500DAE0FE /* UINavigationController+Custom.m in Sources */,
 				70517F711CD77E3F0029233C /* JEGeoInfoModel.m in Sources */,
 				707B392E1CD34D01000A3C93 /* JEPersonViewController.m in Sources */,
+				70DAE0941CD9B9FA00DAE0FE /* JEDrawerHelper.m in Sources */,
+				70517F891CD83D0C0029233C /* JEUserManager.m in Sources */,
+				70517F851CD8356F0029233C /* JEHTTPManager+Content.m in Sources */,
 				707B390B1CD2FCAA000A3C93 /* AppDelegate.m in Sources */,
 				70517F641CD6DC070029233C /* JEBaseWeiboCell.m in Sources */,
 				70517F6A1CD6DD2C0029233C /* JEBaseWeiboContentModel.m in Sources */,
 				70517F771CD782F30029233C /* JEBaseModel.m in Sources */,
 				707B38D01CD2FA24000A3C93 /* main.m in Sources */,
+				70DAE08B1CD8E80800DAE0FE /* JERetweetViewInCell.m in Sources */,
 				707B39071CD2FAF1000A3C93 /* RootViewController.m in Sources */,
 				707B39281CD34CCF000A3C93 /* JEDiscoverViewController.m in Sources */,
+				70DAE0981CD9E40A00DAE0FE /* JEHTTPManager+User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +754,7 @@
 			baseConfigurationReference = CB6F737BE6E44C8CA5F096C4 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Jellybo/Application/PrefixHeader.pch;
 				INFOPLIST_FILE = Jellybo/Info.plist;
@@ -700,6 +769,7 @@
 			baseConfigurationReference = CB6F737BE6E44C8CA5F096C4 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Jellybo/Application/PrefixHeader.pch;
 				INFOPLIST_FILE = Jellybo/Info.plist;

@@ -34,6 +34,9 @@
                                                                   @"application/json",
                                                                   @"text/json",
                                                                   @"text/javascript",
+                                                                  @"text/html",
+                                                                  @"image/jpeg",
+                                                                  @"image/jpg",
                                                                   nil];
     }
     
