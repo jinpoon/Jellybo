@@ -31,6 +31,7 @@
     //manager
     [JEUserManager manager];
     [JEHTTPManager manager];
+    [JECacheManager manager];
     
     //Weibo
     [WeiboSDK enableDebugMode:YES];

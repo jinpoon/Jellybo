@@ -20,5 +20,7 @@
 #import "JEApiKeys.h"
 #import "JEUserManager.h"
 #import "JEHTTPManager.h"
+#import "JECacheManager.h"
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import <TMCache/TMCache.h>
 #endif /* PrefixHeader_pch */

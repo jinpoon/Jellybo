@@ -26,4 +26,8 @@
 #define SINA_WEIBO_USER_ID @"sina_weibo_user_id"
 #define SINA_WEIBO_EXPIRE_DATE @"sina_weibo_expire_date"
 
+#define kCacheManager [JECacheManager manager]
+#define kHTTPManager  [JEHTTPManager  manager]
+#define kUserManager  [JEUserManager  manager]
+
 #endif /* Macros_h */

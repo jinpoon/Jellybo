@@ -55,13 +55,31 @@
 #pragma mark - data
 
 - (void)requestData{
-    [[JEHTTPManager manager] getHomeTimelineWeiboContentListWithSinceId:0 maxId:0 count:10 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
-        self.contentListModel = listModel;
+    JEBaseWeiboContentListModel *cacheListModel = (JEBaseWeiboContentListModel *)[kCacheManager homeWeiboContentObjectForKey:JEHomeViewWeiboContentCache];
+    NSInteger sinceId = 0;
+    if (cacheListModel && cacheListModel.list.count > 0) {
+        JEBaseWeiboContentModel *newestModelInCache = cacheListModel.list[0];
+        sinceId = [newestModelInCache.w_id integerValue];
+    }
+
+    [[JEHTTPManager manager] getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:0 count:50 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+        
+        if(cacheListModel){
+            [cacheListModel.list addObjectsFromArray:listModel.list];
+            self.contentListModel = cacheListModel;
+        }
+        else{
+            self.contentListModel = listModel;
+        }
+        
+        [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
         
         
     }failure:^(NSError *error){
         NSLog(@"%@",error.description);
+        self.contentListModel = cacheListModel;
     }];
+    
 }
 
 - (void)setContentListModel:(JEBaseWeiboContentListModel *)contentListModel{

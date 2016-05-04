@@ -31,6 +31,7 @@ PODS:
     - BlocksKit/DynamicDelegate
   - FrameAccessor (2.0)
   - MJRefresh (3.1.0)
+  - TMCache (2.1.0)
   - TTTAttributedLabel (1.13.4)
   - WeiboSDK (3.1.3)
 
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - BlocksKit
   - FrameAccessor
   - MJRefresh
+  - TMCache
   - TTTAttributedLabel
   - WeiboSDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
 
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   FrameAccessor: 443a13e58e23a10ff22180da0897b28c3f6abf66
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   WeiboSDK: 94544259e6bdaf6d3a81be2a7d6fde0c44ff1acc
 

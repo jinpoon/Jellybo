@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NSDictionary+NotNullKey.h"
 
-@interface JEBaseModel : NSObject
+@interface JEBaseModel : NSObject<NSCoding>
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

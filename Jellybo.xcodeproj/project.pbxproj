@@ -31,6 +31,7 @@
 		707B39281CD34CCF000A3C93 /* JEDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B39271CD34CCF000A3C93 /* JEDiscoverViewController.m */; };
 		707B392B1CD34CED000A3C93 /* JEMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B392A1CD34CED000A3C93 /* JEMessagesViewController.m */; };
 		707B392E1CD34D01000A3C93 /* JEPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B392D1CD34D01000A3C93 /* JEPersonViewController.m */; };
+		70C7E7001CDA3BA900F0153E /* JECacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7E6FF1CDA3BA900F0153E /* JECacheManager.m */; };
 		70DAE08B1CD8E80800DAE0FE /* JERetweetViewInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */; };
 		70DAE08E1CD8E87500DAE0FE /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE08D1CD8E87500DAE0FE /* UINavigationController+Custom.m */; };
 		70DAE0901CD9AE1100DAE0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70DAE08F1CD9AE1100DAE0FE /* Assets.xcassets */; };
@@ -109,6 +110,8 @@
 		707B392C1CD34D01000A3C93 /* JEPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEPersonViewController.h; path = UIViewControllers/Person/JEPersonViewController.h; sourceTree = "<group>"; };
 		707B392D1CD34D01000A3C93 /* JEPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEPersonViewController.m; path = UIViewControllers/Person/JEPersonViewController.m; sourceTree = "<group>"; };
 		707B392F1CD351FD000A3C93 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Colors.h; path = SupportingFiles/Colors.h; sourceTree = "<group>"; };
+		70C7E6FE1CDA3BA900F0153E /* JECacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JECacheManager.h; sourceTree = "<group>"; };
+		70C7E6FF1CDA3BA900F0153E /* JECacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JECacheManager.m; sourceTree = "<group>"; };
 		70DAE0891CD8E80800DAE0FE /* JERetweetViewInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JERetweetViewInCell.h; path = Jellybo/UIViewControllers/Home/View/JERetweetViewInCell.h; sourceTree = SOURCE_ROOT; };
 		70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JERetweetViewInCell.m; path = Jellybo/UIViewControllers/Home/View/JERetweetViewInCell.m; sourceTree = SOURCE_ROOT; };
 		70DAE08C1CD8E87500DAE0FE /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Custom.h"; path = "Vendors/UINavigationController+Custom.h"; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 		70517F7E1CD7A07F0029233C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				70C7E6FE1CDA3BA900F0153E /* JECacheManager.h */,
+				70C7E6FF1CDA3BA900F0153E /* JECacheManager.m */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				707B390B1CD2FCAA000A3C93 /* AppDelegate.m in Sources */,
 				70517F641CD6DC070029233C /* JEBaseWeiboCell.m in Sources */,
 				70517F6A1CD6DD2C0029233C /* JEBaseWeiboContentModel.m in Sources */,
+				70C7E7001CDA3BA900F0153E /* JECacheManager.m in Sources */,
 				70517F771CD782F30029233C /* JEBaseModel.m in Sources */,
 				707B38D01CD2FA24000A3C93 /* main.m in Sources */,
 				70DAE08B1CD8E80800DAE0FE /* JERetweetViewInCell.m in Sources */,
