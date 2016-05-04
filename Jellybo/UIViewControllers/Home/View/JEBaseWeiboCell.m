@@ -60,6 +60,7 @@
     self.divideline.top = self.avatar.bottom + 10;
     
     self.content.frame = CGRectMake(0, 0, self.width - 30, 100);
+    [self.content sizeToFit];
     self.content.top = self.divideline.bottom + 10;
     self.content.left = 16;
     
@@ -76,7 +77,7 @@
     
     self.username = [[UILabel alloc] init];
     self.username.textColor = kThemeColor;
-    self.username.font = [UIFont systemFontOfSize:15];
+    self.username.font = [UIFont systemFontOfSize:13];
     [self addSubview:self.username];
     
     self.creatTime = [[UILabel alloc] init];
@@ -125,7 +126,9 @@
 }
 
 - (CGFloat)cellHeight{
-    return self.cellFooterView.bottom;
+    CGFloat requiredHeight = self.divideline.bottom + 10 + self.content.height + 30;
+    
+    return requiredHeight;
 }
 
 @end

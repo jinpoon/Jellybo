@@ -20,6 +20,8 @@
 
 @implementation JEHomeViewController
 
+#pragma mark - views
+
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     self.tableView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
@@ -33,6 +35,7 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     //self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^(){}];
 }
@@ -41,10 +44,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configureViews];
-    [self testDataRequest];
+    [self requestData];
 }
 
-- (void)testDataRequest{
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - data
+
+- (void)requestData{
     [[JEHTTPManager manager] getHomeTimelineWeiboContentListWithSinceId:0 maxId:0 count:10 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
         self.contentListModel = listModel;
         
@@ -73,9 +83,9 @@
     [WeiboSDK sendRequest:request];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - tableview
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -93,8 +103,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    JEBaseWeiboCell *cell = (JEBaseWeiboCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     
-    return 200;
+    return [cell cellHeight];
     
 }
 
