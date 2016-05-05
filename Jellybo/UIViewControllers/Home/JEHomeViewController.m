@@ -35,7 +35,6 @@
     self.view.backgroundColor = kBackgroundGrayColor;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
-    
     self.tableView = [[UITableView alloc] init];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
@@ -55,9 +54,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [kCacheManager clearHomeContentCache];
     [self configureViews];
-    [self requestData];
+    [self tryLoadDataFromCache];
     
 }
 
@@ -76,14 +74,20 @@
 #pragma mark - data
 - (void)requestNewDataWithSuccessBlock:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
     NSInteger sinceId = 0;
+    NSString *text;
     if(self.contentListModel){
-        JEBaseWeiboContentModel *model = [self.contentListModel.list lastObject];
+        JEBaseWeiboContentModel *model = [self.contentListModel.list firstObject];
         sinceId = [model.w_id integerValue];
     }
     [self getWeiboContentWithSinceId:sinceId maxId:0 count:50 success:^(JEBaseWeiboContentListModel *listModel){
+
         if(self.contentListModel){
             [self.contentListModel insertListModelsFromHead:listModel];
             [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
+            [self.tableView reloadData];
+        }
+        else{
+            self.contentListModel = listModel;
         }
         if(success){
             success(listModel);
@@ -109,32 +113,11 @@
 }
 
 
-- (void)requestData{
+- (void)tryLoadDataFromCache{
     JEBaseWeiboContentListModel *cacheListModel = (JEBaseWeiboContentListModel *)[kCacheManager homeWeiboContentObjectForKey:JEHomeViewWeiboContentCache];
-    NSInteger sinceId = 0;
     if (cacheListModel && cacheListModel.list.count > 0) {
-        JEBaseWeiboContentModel *newestModelInCache = cacheListModel.list[0];
-        
-        sinceId = [newestModelInCache.w_id integerValue];
-    }
-    [self.tableView.mj_header beginRefreshing];
-    [self getWeiboContentWithSinceId:sinceId maxId:0 count:50  success:^(JEBaseWeiboContentListModel *listModel){
-        
-        if(cacheListModel){
-            [cacheListModel insertListModelsFromHead:listModel];
-            self.contentListModel = cacheListModel;
-        }
-        else{
-            self.contentListModel = listModel;
-        }
-        
-        [self.tableView.mj_header endRefreshing];
-        
-    }failure:^(NSError *error){
         self.contentListModel = cacheListModel;
-        [self.tableView.mj_header endRefreshing];
-    }];
-    
+    }
 }
 
 - (void)setContentListModel:(JEBaseWeiboContentListModel *)contentListModel{

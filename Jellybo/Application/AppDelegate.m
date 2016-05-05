@@ -107,7 +107,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:SINA_WEIBO_ACCESS_TOKEN];
             [[NSUserDefaults standardUserDefaults] setObject:userId forKey:SINA_WEIBO_USER_ID];
             [[NSUserDefaults standardUserDefaults] setObject:expireDate forKey:SINA_WEIBO_EXPIRE_DATE];
-            
+            kUserManager.accessToken = accessToken;
+            kUserManager.userId = userId;
         }
     }
     
