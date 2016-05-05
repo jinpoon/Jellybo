@@ -53,7 +53,7 @@ static NSString * const kContentCacheName = @"kHomeContentCache";
     [self.homeContentCache removeObjectForKey:aKey];
 }
 
-- (void)clearCache{
+- (void)clearHomeContentCache{
     [self.homeContentCache removeAllObjects];
 }
 

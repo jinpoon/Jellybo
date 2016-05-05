@@ -55,13 +55,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [kCacheManager clearHomeContentCache];
     [self configureViews];
     [self requestData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+//    [kCacheManager clearHomeContentCache];
+//    [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
+
 }
 
 #pragma mark - data
@@ -71,7 +80,11 @@
         JEBaseWeiboContentModel *model = [self.contentListModel.list lastObject];
         sinceId = [model.w_id integerValue];
     }
-    [kHTTPManager getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:0 count:50 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+    [self getWeiboContentWithSinceId:sinceId maxId:0 count:50 success:^(JEBaseWeiboContentListModel *listModel){
+        if(self.contentListModel){
+            [self.contentListModel insertListModelsFromHead:listModel];
+            [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
+        }
         if(success){
             success(listModel);
         }
@@ -81,10 +94,9 @@
 }
 
 - (void)getWeiboContentWithSinceId: (NSInteger)sinceId maxId: (NSInteger)maxId count:(NSInteger)count success:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
+    
     [kHTTPManager getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:maxId count:count feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
-        if(self.contentListModel){
-            [self.contentListModel insertListModelsFromHead:listModel];
-        }
+        NSLog(@"%ld", listModel.list.count);
         if(success){
             success(listModel);
         }
@@ -102,6 +114,7 @@
     NSInteger sinceId = 0;
     if (cacheListModel && cacheListModel.list.count > 0) {
         JEBaseWeiboContentModel *newestModelInCache = cacheListModel.list[0];
+        
         sinceId = [newestModelInCache.w_id integerValue];
     }
     [self.tableView.mj_header beginRefreshing];
@@ -114,8 +127,8 @@
         else{
             self.contentListModel = listModel;
         }
-        [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
         
+        [self.tableView.mj_header endRefreshing];
         
     }failure:^(NSError *error){
         self.contentListModel = cacheListModel;
@@ -128,6 +141,7 @@
     _contentListModel = contentListModel;
     if(_contentListModel){
         [self.tableView reloadData];
+        [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
     }
 }
 

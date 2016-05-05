@@ -20,6 +20,6 @@ static NSString* JEHomeViewWeiboContentCache = @"JEHomeViewWeiboContentCache";
 
 - (void)removeObjectForKey:(NSString *)aKey;
 
-- (void)clearCache;
+- (void)clearHomeContentCache;
 
 @end

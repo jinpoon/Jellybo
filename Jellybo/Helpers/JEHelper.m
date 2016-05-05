@@ -8,6 +8,10 @@
 
 #import "JEHelper.h"
 
+static NSTimeInterval oneDay = 24*60*60;
+static NSTimeInterval oneHour = 60*60;
+
+
 @implementation JEHelper
 + (NSString *)timeRemainDescriptionWithTimestamp:(CGFloat)timestamp {
     
@@ -182,6 +186,39 @@
     }
     
     return false;
+}
+
++ (NSDate *)dateWithFormatedString:(NSString *)s{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.locale = [NSLocale localeWithLocaleIdentifier:@"en"];
+    df.dateFormat = @"EEE MMM dd HH:mm:ss zzz yyyy";
+    return [df dateFromString:s];
+}
+
++ (NSString *)showTimeStringWithNSDate: (NSDate *)date{
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval secondsFromDatesToNow = [now timeIntervalSinceDate:date];
+    
+    
+    if(secondsFromDatesToNow >= oneDay/2){ //半天之内
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.locale = [NSLocale localeWithLocaleIdentifier:@"en"];
+
+        df.dateFormat = @"yyyy-MM-dd HH:mm";
+        return [df stringFromDate:date];
+    }
+    else if (secondsFromDatesToNow >= oneHour){
+        NSInteger hour = secondsFromDatesToNow/oneHour;
+        return [NSString stringWithFormat:@"%ld 小时前", (long)hour];
+    }
+    else{
+        NSInteger min = secondsFromDatesToNow/60;
+        if (min == 0) {
+            min = 1;
+        }
+        return [NSString stringWithFormat:@"%ld 分钟前", min];
+    }
+        
 }
 
 #pragma mark - View

@@ -31,6 +31,9 @@
 + (BOOL)moreThanOneDayBetween:(CGFloat)oldTimeStamp
                  newTimeStamp:(CGFloat)newTimeStamp;
 
++ (NSDate *)dateWithFormatedString:(NSString *)s;
++ (NSString *)showTimeStringWithNSDate: (NSDate *)date;
+
 #pragma mark - View
 
 + (UIImage *)getImageFromView:(UIView *)orgView;

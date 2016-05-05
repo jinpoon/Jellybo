@@ -28,6 +28,8 @@
     
     [self.window makeKeyAndVisible];
     
+    [self setUrlCacheCapacity];
+    
     //manager
     [JEUserManager manager];
     [JEHTTPManager manager];
@@ -38,6 +40,14 @@
     [WeiboSDK registerApp:@"1913145241"];
     [self checkIfExpired];
     return YES;
+}
+
+- (void) setUrlCacheCapacity{
+    //设置cache
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1 * 1024 * 1024
+                                                            diskCapacity:2 * 1024 * 1024
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
 }
 
 #pragma mark - OpenURL

@@ -9,7 +9,7 @@
 #import "JEBaseWeiboCell.h"
 #import "JERetweetViewInCell.h"
 #import "JEHTTPManager+User.h"
-#import "JEDrawerHelper.h"
+#import "JEHelper.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 
 @interface JEBaseWeiboCell()
@@ -18,6 +18,7 @@
 @property (nonatomic) UIImageView *verifiedSign;
 @property (nonatomic) UIView *divideline; //分割线
 @property (nonatomic) UILabel *creatTime;
+@property (nonatomic) NSArray *pics; //图片列表
 
 
 @property (nonatomic) TTTAttributedLabel *content;
@@ -50,10 +51,12 @@
     
     self.username.frame = CGRectMake(0, 0, 200, 20);
     self.username.left = self.avatar.right + 10;
+    [self.username sizeToFit];
     self.username.top = self.avatar.top;
     
     self.creatTime.frame = CGRectMake(0, 0, 200, 10);
     self.creatTime.left = self.username.left;
+    [self.creatTime sizeToFit];
     self.creatTime.bottom = self.avatar.bottom;
     
     self.divideline.frame = CGRectMake(0, 0, self.width, 0.5);
@@ -106,7 +109,17 @@
     if(model){
         _model = model;
         self.username.text = model.userInfo.screen_name;
-        self.creatTime.text = model.createTime;
+        
+        NSString *source = model.source;
+        NSArray *strs = [source componentsSeparatedByString:@">"];
+        source = strs[strs.count - 2];
+        strs = [source componentsSeparatedByString:@"<"];
+        source = strs.firstObject;
+        
+        
+        NSDate *date = [JEHelper dateWithFormatedString:model.createTime];
+        self.creatTime.text = [NSString stringWithFormat:@"%@ 来自%@", [JEHelper showTimeStringWithNSDate:date], source];
+        
         if(model.userInfo.verified){
             NSInteger verified_type = model.userInfo.verified_type;
             if(verified_type == 0){
