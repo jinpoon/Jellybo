@@ -37,6 +37,8 @@
 		70DAE0901CD9AE1100DAE0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70DAE08F1CD9AE1100DAE0FE /* Assets.xcassets */; };
 		70DAE0941CD9B9FA00DAE0FE /* JEDrawerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE0931CD9B9FA00DAE0FE /* JEDrawerHelper.m */; };
 		70DAE0981CD9E40A00DAE0FE /* JEHTTPManager+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DAE0971CD9E40A00DAE0FE /* JEHTTPManager+User.m */; };
+		70E66B611CDAB42E0018B6E9 /* JEErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E66B601CDAB42E0018B6E9 /* JEErrorView.m */; };
+		70E66B661CDAB7DB0018B6E9 /* JEHomeRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E66B651CDAB7DB0018B6E9 /* JEHomeRefresher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,10 @@
 		70DAE0931CD9B9FA00DAE0FE /* JEDrawerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEDrawerHelper.m; sourceTree = "<group>"; };
 		70DAE0961CD9E40A00DAE0FE /* JEHTTPManager+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JEHTTPManager+User.h"; sourceTree = "<group>"; };
 		70DAE0971CD9E40A00DAE0FE /* JEHTTPManager+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JEHTTPManager+User.m"; sourceTree = "<group>"; };
+		70E66B5F1CDAB42E0018B6E9 /* JEErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEErrorView.h; path = Jellybo/UIViewControllers/Home/View/JEErrorView.h; sourceTree = SOURCE_ROOT; };
+		70E66B601CDAB42E0018B6E9 /* JEErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEErrorView.m; path = Jellybo/UIViewControllers/Home/View/JEErrorView.m; sourceTree = SOURCE_ROOT; };
+		70E66B641CDAB7DB0018B6E9 /* JEHomeRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JEHomeRefresher.h; path = Jellybo/UIViewControllers/Home/View/JEHomeRefresher.h; sourceTree = SOURCE_ROOT; };
+		70E66B651CDAB7DB0018B6E9 /* JEHomeRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JEHomeRefresher.m; path = Jellybo/UIViewControllers/Home/View/JEHomeRefresher.m; sourceTree = SOURCE_ROOT; };
 		CB6F737BE6E44C8CA5F096C4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,10 +167,12 @@
 		70517F611CD6DB720029233C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				70517F621CD6DC070029233C /* JEBaseWeiboCell.h */,
-				70517F631CD6DC070029233C /* JEBaseWeiboCell.m */,
+				70E66B631CDAB7940018B6E9 /* Refresher */,
+				70E66B671CDAB7EC0018B6E9 /* Cell */,
 				70DAE0891CD8E80800DAE0FE /* JERetweetViewInCell.h */,
 				70DAE08A1CD8E80800DAE0FE /* JERetweetViewInCell.m */,
+				70E66B5F1CDAB42E0018B6E9 /* JEErrorView.h */,
+				70E66B601CDAB42E0018B6E9 /* JEErrorView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +445,24 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		70E66B631CDAB7940018B6E9 /* Refresher */ = {
+			isa = PBXGroup;
+			children = (
+				70E66B641CDAB7DB0018B6E9 /* JEHomeRefresher.h */,
+				70E66B651CDAB7DB0018B6E9 /* JEHomeRefresher.m */,
+			);
+			name = Refresher;
+			sourceTree = "<group>";
+		};
+		70E66B671CDAB7EC0018B6E9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				70517F621CD6DC070029233C /* JEBaseWeiboCell.h */,
+				70517F631CD6DC070029233C /* JEBaseWeiboCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -605,6 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E66B611CDAB42E0018B6E9 /* JEErrorView.m in Sources */,
 				70517F811CD7A0F30029233C /* JEHTTPManager.m in Sources */,
 				707B391D1CD30218000A3C93 /* EXTScope.m in Sources */,
 				707B39141CD30010000A3C93 /* JEHelper.m in Sources */,
@@ -628,6 +655,7 @@
 				70DAE08B1CD8E80800DAE0FE /* JERetweetViewInCell.m in Sources */,
 				707B39071CD2FAF1000A3C93 /* RootViewController.m in Sources */,
 				707B39281CD34CCF000A3C93 /* JEDiscoverViewController.m in Sources */,
+				70E66B661CDAB7DB0018B6E9 /* JEHomeRefresher.m in Sources */,
 				70DAE0981CD9E40A00DAE0FE /* JEHTTPManager+User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

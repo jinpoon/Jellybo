@@ -11,11 +11,15 @@
 #import "JEHTTPManager+Content.h"
 #import "JEBaseWeiboContentModel.h"
 #import "JEBaseWeiboCell.h"
+#import "JEErrorView.h"
+#import "JEHomeRefresher.h"
 
 @interface JEHomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic, strong) JEBaseWeiboContentListModel *contentListModel;
+
+@property (nonatomic) JEErrorView *errorView;
 @end
 
 @implementation JEHomeViewController
@@ -31,13 +35,21 @@
     self.view.backgroundColor = kBackgroundGrayColor;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
+    
     self.tableView = [[UITableView alloc] init];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
-    //self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^(){}];
+    self.tableView.mj_header = [JEHomeRefresher headerWithRefreshingBlock:^(){
+        [self requestNewDataWithSuccessBlock:^(JEBaseWeiboContentListModel *listModel){
+            [self.tableView.mj_header endRefreshing];
+        }failure:^(NSError *error){
+            [self.tableView.mj_header endRefreshing];
+        }];
+    }];
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
 }
 
 - (void)viewDidLoad {
@@ -53,6 +65,37 @@
 }
 
 #pragma mark - data
+- (void)requestNewDataWithSuccessBlock:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
+    NSInteger sinceId = 0;
+    if(self.contentListModel){
+        JEBaseWeiboContentModel *model = [self.contentListModel.list lastObject];
+        sinceId = [model.w_id integerValue];
+    }
+    [kHTTPManager getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:0 count:50 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+        if(success){
+            success(listModel);
+        }
+    }failure:^(NSError *error){
+        NSLog(@"%@",error.description);
+    }];
+}
+
+- (void)getWeiboContentWithSinceId: (NSInteger)sinceId maxId: (NSInteger)maxId count:(NSInteger)count success:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
+    [kHTTPManager getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:maxId count:count feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+        if(self.contentListModel){
+            [self.contentListModel insertListModelsFromHead:listModel];
+        }
+        if(success){
+            success(listModel);
+        }
+    }failure:^(NSError *error){
+        NSLog(@"%@",error.description);
+        if(failure){
+            failure(error);
+        }
+    }];
+}
+
 
 - (void)requestData{
     JEBaseWeiboContentListModel *cacheListModel = (JEBaseWeiboContentListModel *)[kCacheManager homeWeiboContentObjectForKey:JEHomeViewWeiboContentCache];
@@ -61,23 +104,22 @@
         JEBaseWeiboContentModel *newestModelInCache = cacheListModel.list[0];
         sinceId = [newestModelInCache.w_id integerValue];
     }
-
-    [[JEHTTPManager manager] getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:0 count:50 feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
+    [self.tableView.mj_header beginRefreshing];
+    [self getWeiboContentWithSinceId:sinceId maxId:0 count:50  success:^(JEBaseWeiboContentListModel *listModel){
         
         if(cacheListModel){
-            [cacheListModel.list addObjectsFromArray:listModel.list];
+            [cacheListModel insertListModelsFromHead:listModel];
             self.contentListModel = cacheListModel;
         }
         else{
             self.contentListModel = listModel;
         }
-        
         [kCacheManager setHomeWeiboContent:self.contentListModel forKey:JEHomeViewWeiboContentCache];
         
         
     }failure:^(NSError *error){
-        NSLog(@"%@",error.description);
         self.contentListModel = cacheListModel;
+        [self.tableView.mj_header endRefreshing];
     }];
     
 }

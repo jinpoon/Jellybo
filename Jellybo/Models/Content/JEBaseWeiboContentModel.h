@@ -40,4 +40,6 @@
 
 @property (nonatomic, strong) NSMutableArray *list;
 
+- (void)insertListModelsFromHead:(JEBaseWeiboContentListModel *)newList;
+
 @end

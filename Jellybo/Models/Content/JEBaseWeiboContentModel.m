@@ -54,4 +54,13 @@
     return self;
 }
 
+- (void)insertListModelsFromHead:(JEBaseWeiboContentListModel *)newList{
+    NSMutableIndexSet *indexes = [NSMutableIndexSet indexSet];
+    for(int i = 0;i < newList.list.count;i++)
+    {
+        [indexes addIndex:i];
+    }
+    [self.list insertObjects:newList.list atIndexes:indexes];
+}
+
 @end
