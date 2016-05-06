@@ -21,7 +21,8 @@
         self.source = [dict objectForSafeKey:k_source];
         self.favorited = [[dict objectForSafeKey:k_favorited] boolValue];
         self.truncated = [[dict objectForSafeKey:k_truncated] boolValue];
-        self.thumbnail_pics_urls = [dict objectForSafeKey:k_pics_urls];
+        self.thumbnail_pics_urls = [dict objectForSafeKey:k_pics_urls];//初始数据是一个字典序列
+        [self hanlePicsUrl];
         //self.geoInfo = [dict objectForSafeKey:k_geo];
         self.userInfo = nil;
         NSDictionary *userInfoDict = [dict objectForSafeKey:k_user];
@@ -35,6 +36,27 @@
         
     }
     return self;
+}
+
+- (void)hanlePicsUrl{
+    if (self.thumbnail_pics_urls.count == 0) {
+        self.thumbnail_pics_urls = nil;
+        return;
+    }
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSMutableArray *bmiddle_array = [[NSMutableArray alloc] init];
+    NSMutableArray *large_array = [[NSMutableArray alloc] init];
+    for (NSDictionary *dict in self.thumbnail_pics_urls) {
+        [array addObject:[dict objectForSafeKey:@"thumbnail_pic"]];
+    }
+    self.thumbnail_pics_urls = [NSArray arrayWithArray:array];
+    
+    for (NSString *str in array) {
+        [bmiddle_array addObject:[str stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"]];
+        [large_array addObject:[str stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"large_pic"]];
+    }
+    self.bmiddle_pics_urls = [NSArray arrayWithArray:bmiddle_array];
+    self.large_pics_urls = [NSArray arrayWithArray:large_array];
 }
 
 @end

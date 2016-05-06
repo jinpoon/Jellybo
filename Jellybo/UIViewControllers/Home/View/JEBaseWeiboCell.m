@@ -18,7 +18,7 @@
 @property (nonatomic) UIImageView *verifiedSign;
 @property (nonatomic) UIView *divideline; //分割线
 @property (nonatomic) UILabel *creatTime;
-@property (nonatomic) NSArray *pics; //图片列表
+@property (nonatomic, strong) NSArray *pics; //图片列表
 
 
 @property (nonatomic) TTTAttributedLabel *content;
@@ -69,6 +69,44 @@
     
     self.cellFooterView.frame = CGRectMake(0, 0, self.width, 10);
     self.cellFooterView.bottom = self.height;
+    
+    if(self.model && self.model.thumbnail_pics_urls){
+        [self layoutImageViews];
+    }
+    else{
+        for (UIImageView *view in self.pics) {
+            view.hidden = YES;
+            [view removeFromSuperview];
+        }
+    }
+}
+
+- (void)layoutImageViews{
+    CGFloat thumbImgWidth = (self.width - 16 * 2 - 5 *2)/3; //减去两边间距及中间间距后平均分布
+    NSInteger numOfPics = self.model.thumbnail_pics_urls.count;
+    UIImageView *imgView;
+    NSURL *picUrl;
+    for (NSInteger i = 0; i<numOfPics; i++) {
+        imgView = self.pics[i];
+        imgView.hidden = NO;
+        [self addSubview:imgView];
+        if (i %3 == 0) {
+            imgView.frame = CGRectMake(16, self.content.bottom + (i/3 + 1) * 5 + i/3*thumbImgWidth, thumbImgWidth, thumbImgWidth);
+        }
+        else {
+            UIImageView *leftView = self.pics[i-1];
+            imgView.frame = CGRectMake(leftView.right + 5, leftView.top, thumbImgWidth, thumbImgWidth);
+        }
+        picUrl = [NSURL URLWithString: self.model.bmiddle_pics_urls[i]];
+        imgView.contentMode = UIViewContentModeScaleToFill;
+        [imgView setImageWithURL:picUrl];
+    }
+    for (NSInteger i = numOfPics; i<9; i++) {
+        imgView = self.pics[i];
+        imgView.hidden = YES;
+        
+        [imgView removeFromSuperview];
+    }
 }
 
 - (void)configureViews{
@@ -103,6 +141,14 @@
     self.cellFooterView = [[UIView alloc] init];
     self.cellFooterView.backgroundColor = kBackgroundGrayColor;
     [self addSubview:self.cellFooterView];
+    
+    NSMutableArray *imgArray = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i<9; i++) {
+        UIImageView *img = [[UIImageView alloc] init];
+        img.hidden = YES;
+        [imgArray addObject:img];
+    }
+    self.pics = [NSArray arrayWithArray:imgArray];
 }
 
 - (void)setModel:(JEBaseWeiboContentModel *)model{
@@ -139,8 +185,14 @@
 }
 
 - (CGFloat)cellHeight{
-    CGFloat requiredHeight = self.divideline.bottom + 10 + self.content.height + 30;
-    
+    CGFloat heightForPics = 0;
+    if(self.model.thumbnail_pics_urls){
+        CGFloat thumbImgWidth = (kScreenWidth - 16 * 2 - 5 *2)/3;
+        NSInteger numOfPics = self.model.thumbnail_pics_urls.count - 1;
+        heightForPics = (numOfPics/3 + 1)*thumbImgWidth + numOfPics/3*5;
+    }
+    CGFloat requiredHeight = self.divideline.bottom  + self.content.height + 30 + heightForPics;
+    NSLog(@"pic height: %f,  numberofpics: %ld",heightForPics,  self.model.thumbnail_pics_urls.count);
     return requiredHeight;
 }
 

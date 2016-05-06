@@ -51,10 +51,15 @@
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
 }
 
+- (void)loadView{
+    [super loadView];
+    [self configureViews];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self configureViews];
+    //[self configureViews];
     [self tryLoadDataFromCache];
     
 }
@@ -74,7 +79,6 @@
 #pragma mark - data
 - (void)requestNewDataWithSuccessBlock:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
     NSInteger sinceId = 0;
-    NSString *text;
     if(self.contentListModel){
         JEBaseWeiboContentModel *model = [self.contentListModel.list firstObject];
         sinceId = [model.w_id integerValue];
