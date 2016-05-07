@@ -99,7 +99,7 @@
 - (void)getWeiboContentWithSinceId: (NSInteger)sinceId maxId: (NSInteger)maxId count:(NSInteger)count success:(void (^)(JEBaseWeiboContentListModel *listModel))success failure:(void (^)(NSError *error))failure{
     
     [kHTTPManager getHomeTimelineWeiboContentListWithSinceId:sinceId maxId:maxId count:count feature:JEWeiboFeatureAll ifTimeUser:NO success:^(JEBaseWeiboContentListModel *listModel){
-        NSLog(@"%ld", listModel.list.count);
+        NSLog(@"%ld", (unsigned long)listModel.list.count);
         if(success){
             success(listModel);
         }

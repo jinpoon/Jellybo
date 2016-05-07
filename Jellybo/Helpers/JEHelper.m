@@ -216,7 +216,7 @@ static NSTimeInterval oneHour = 60*60;
         if (min == 0) {
             min = 1;
         }
-        return [NSString stringWithFormat:@"%ld 分钟前", min];
+        return [NSString stringWithFormat:@"%ld 分钟前", (long)min];
     }
         
 }

@@ -35,7 +35,7 @@
         self.verified_type = [[dict objectForSafeKey:k_verified_type] integerValue];
         self.remark = [dict objectForSafeKey:k_remark];
         //self.latestweibo
-        self.isAllowAllComment = [dict objectForSafeKey:k_allow_all_comment];
+        self.isAllowAllComment = [[dict objectForSafeKey:k_allow_all_comment] boolValue];
         self.avatar_large_url = [dict objectForSafeKey:k_avatar_large];
         self.avatar_hd_url = [dict objectForSafeKey:k_avatar_hd];
         self.isFollowMe = [[dict objectForSafeKey:k_follow_me] boolValue];

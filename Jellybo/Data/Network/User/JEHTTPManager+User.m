@@ -20,7 +20,7 @@
         }
         
     }failure:^(NSError *error){
-        NSLog(@"error: %@: %ld",error.description, error.code);
+        NSLog(@"error: %@: %ld",error.description, (long)error.code);
     }];
 }
 
