@@ -51,15 +51,10 @@
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
 }
 
-- (void)loadView{
-    [super loadView];
-    [self configureViews];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //[self configureViews];
+    [self configureViews];
     [self tryLoadDataFromCache];
     
 }

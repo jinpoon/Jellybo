@@ -5,4 +5,5 @@ pod "WeiboSDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 pod 'MJRefresh'
 pod 'TTTAttributedLabel'
 pod 'TMCache'
+pod 'SDWebImage'
 

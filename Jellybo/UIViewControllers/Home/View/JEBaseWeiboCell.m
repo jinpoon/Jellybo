@@ -79,6 +79,7 @@
             [view removeFromSuperview];
         }
     }
+    NSLog(@"layout called");
 }
 
 - (void)layoutImageViews{
@@ -192,7 +193,8 @@
         heightForPics = (numOfPics/3 + 1)*thumbImgWidth + numOfPics/3*5;
     }
     CGFloat requiredHeight = self.divideline.bottom  + self.content.height + 30 + heightForPics;
-    NSLog(@"pic height: %f,  numberofpics: %ld",heightForPics,  self.model.thumbnail_pics_urls.count);
+    //NSLog(@"img width: %f", thumbImgWidth);
+    //NSLog(@"cellheightcalled");
     return requiredHeight;
 }
 
