@@ -20,6 +20,8 @@
 @property (nonatomic) UILabel *creatTime;
 @property (nonatomic, strong) NSArray *pics; //图片列表
 
+@property (nonatomic, assign) CGFloat thumbWidth;//缩略图大小
+
 
 @property (nonatomic) TTTAttributedLabel *content;
 @property (nonatomic) JERetweetViewInCell *retweetView;
@@ -79,12 +81,12 @@
             [view removeFromSuperview];
         }
     }
-    NSLog(@"layout called");
 }
 
 - (void)layoutImageViews{
     CGFloat thumbImgWidth = (self.width - 16 * 2 - 5 *2)/3; //减去两边间距及中间间距后平均分布
     NSInteger numOfPics = self.model.thumbnail_pics_urls.count;
+
     UIImageView *imgView;
     NSURL *picUrl;
     for (NSInteger i = 0; i<numOfPics; i++) {
@@ -99,7 +101,8 @@
             imgView.frame = CGRectMake(leftView.right + 5, leftView.top, thumbImgWidth, thumbImgWidth);
         }
         picUrl = [NSURL URLWithString: self.model.bmiddle_pics_urls[i]];
-        imgView.contentMode = UIViewContentModeScaleToFill;
+        imgView.contentMode = UIViewContentModeScaleToFill | UIViewContentModeTop;
+        imgView.clipsToBounds = YES;
         [imgView setImageWithURL:picUrl];
     }
     for (NSInteger i = numOfPics; i<9; i++) {
@@ -158,16 +161,18 @@
         self.username.text = model.userInfo.screen_name;
         
         NSString *source = model.source;
-        NSArray *strs = [source componentsSeparatedByString:@">"];
-        source = strs[strs.count - 2];
-        strs = [source componentsSeparatedByString:@"<"];
-        source = strs.firstObject;
-        
+        if(source.length > 1){//微博尾巴有可能是空字符串
+            NSArray *strs = [source componentsSeparatedByString:@">"];
+            source = strs[strs.count - 2];
+            strs = [source componentsSeparatedByString:@"<"];
+            source = strs.firstObject;
+        }
         
         NSDate *date = [JEHelper dateWithFormatedString:model.createTime];
         self.creatTime.text = [NSString stringWithFormat:@"%@ 来自%@", [JEHelper showTimeStringWithNSDate:date], source];
         
         if(model.userInfo.verified){
+            self.verifiedSign.hidden = NO;
             NSInteger verified_type = model.userInfo.verified_type;
             if(verified_type == 0){
                 [self.verifiedSign setImage:[UIImage imageNamed:@"verified_personal"]];
@@ -175,6 +180,9 @@
             else if(verified_type > 0){
                 [self.verifiedSign setImage:[UIImage imageNamed:@"verified_enterprise"]];
             }
+        }
+        else{
+            self.verifiedSign.hidden = YES;
         }
         self.content.text = model.textContent;
         if(model.userInfo.avatar_hd_url){
@@ -186,15 +194,22 @@
 }
 
 - (CGFloat)cellHeight{
-    CGFloat heightForPics = 0;
+    NSInteger numOfPics = 0;
+
+    CGFloat thumbWidth = (kScreenWidth - 16 * 2 - 5 *2)/3;
+    
     if(self.model.thumbnail_pics_urls){
-        CGFloat thumbImgWidth = (kScreenWidth - 16 * 2 - 5 *2)/3;
-        NSInteger numOfPics = self.model.thumbnail_pics_urls.count - 1;
-        heightForPics = (numOfPics/3 + 1)*thumbImgWidth + numOfPics/3*5;
+        numOfPics = self.model.thumbnail_pics_urls.count;
     }
-    CGFloat requiredHeight = self.divideline.bottom  + self.content.height + 30 + heightForPics;
-    //NSLog(@"img width: %f", thumbImgWidth);
-    //NSLog(@"cellheightcalled");
+    CGFloat requiredHeight = self.divideline.bottom + 5 + self.content.height;
+    if (numOfPics == 0) {
+        requiredHeight += 30;
+    }
+    else if (numOfPics <= 9){
+        numOfPics = (numOfPics-1)/3;//把图片数转换成行数
+        requiredHeight += (numOfPics+2)*5 + thumbWidth*(numOfPics+2) + 10;
+    }
+    
     return requiredHeight;
 }
 
