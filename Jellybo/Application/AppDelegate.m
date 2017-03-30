@@ -38,7 +38,8 @@
     //Weibo
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:@"1913145241"];
-    [self checkIfExpired];
+    [self authorizeWeibo];
+    //[self checkIfExpired];
     return YES;
 }
 
